@@ -2,6 +2,7 @@ package movieapp.app.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.WindowManager
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import dagger.hilt.android.AndroidEntryPoint
@@ -20,6 +21,13 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setUpNavigation()
+        setUpFlags()
+    }
+
+    private fun setUpFlags() {
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
     }
 
     private fun setUpNavigation() {
