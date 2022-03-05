@@ -1,5 +1,7 @@
 package movieapp.app.datasources
 
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -11,6 +13,7 @@ import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 import java.io.IOException
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
@@ -33,7 +36,8 @@ class ApiModule {
             @Throws(IOException::class)
             override fun intercept(chain: Interceptor.Chain): Response {
                 val originalRequest = chain.request()
-                val newUrl = originalRequest.url.newBuilder().addQueryParameter("api_key", BuildConfig.THE_MOVIE_DB_API_KEY).build()
+                val newUrl = originalRequest.url.newBuilder()
+                    .addQueryParameter("api_key", BuildConfig.THE_MOVIE_DB_API_KEY).build()
 
                 val requestBuilder = originalRequest.newBuilder().url(newUrl)
                 val newRequest = requestBuilder.build()
@@ -61,14 +65,25 @@ class ApiModule {
 
     @Provides
     @Singleton
+    fun provideGson(): Gson {
+        return GsonBuilder()
+            .setLenient()
+            .create()
+    }
+
+    @Provides
+    @Singleton
     fun provideRetrofit(
         client: OkHttpClient,
-        rxJava3CallAdapterFactory: RxJava3CallAdapterFactory
+        rxJava3CallAdapterFactory: RxJava3CallAdapterFactory,
+        gson: Gson
     ): Retrofit {
+        val gsonConverterFactory = GsonConverterFactory.create(gson)
 
         return Retrofit.Builder()
             .client(client)
             .baseUrl(BuildConfig.BASE_URL)
+            .addConverterFactory(gsonConverterFactory)
             .addCallAdapterFactory(rxJava3CallAdapterFactory)
             .build()
     }

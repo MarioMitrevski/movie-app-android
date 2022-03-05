@@ -42,7 +42,7 @@ android {
         dev {
             resValue "string", "app_name", "dev-MovieApp"
             dimension "version"
-            buildConfigField 'String', 'BASE_URL', '"https://api.themoviedb.org/"'
+            buildConfigField 'String', 'BASE_URL', '"https://api.themoviedb.org/3/"'
         }
     }
 }
@@ -65,6 +65,8 @@ dependencies {
     implementation 'com.squareup.okhttp3:logging-interceptor:4.9.0'
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation "com.squareup.retrofit2:adapter-rxjava3:2.9.0"
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.google.code.gson:gson:2.9.0'
 
     //RxJava
     implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
