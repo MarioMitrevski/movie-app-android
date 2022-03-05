@@ -1,1 +1,6 @@
-<resources></resources>
+<resources>
+    <string name="bottom_navigation_home_button_text">Home</string>
+    <string name="bottom_navigation_search_button_text">Search</string>
+    <string name="bottom_navigation_favorites_button_text">Favorites</string>
+
+</resources>

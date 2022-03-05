@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_home"
+        android:enabled="true"
+        android:icon="@drawable/home_button_selector"
+        android:title="@string/bottom_navigation_home_button_text" />
+    <item
+        android:id="@+id/navigation_search"
+        android:enabled="true"
+        android:icon="@drawable/search_button_selector"
+        android:title="@string/bottom_navigation_search_button_text" />
+    <item
+        android:id="@+id/navigation_favorites"
+        android:enabled="true"
+        android:icon="@drawable/favorites_button_selector"
+        android:title="@string/bottom_navigation_favorites_button_text" />
+</menu>
