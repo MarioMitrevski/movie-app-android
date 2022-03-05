@@ -7,6 +7,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import movieapp.app.BuildConfig
+import movieapp.app.datasources.movie.network.MovieApi
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response
@@ -86,5 +87,11 @@ class ApiModule {
             .addConverterFactory(gsonConverterFactory)
             .addCallAdapterFactory(rxJava3CallAdapterFactory)
             .build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideMovieApi(retrofit: Retrofit): MovieApi {
+        return retrofit.create(MovieApi::class.java)
     }
 }

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/rich_black"
-    tools:context=".HomeFragment">
+    tools:context=".ui.home.HomeFragment">
 
     <View
         android:layout_width="match_parent"
@@ -30,9 +30,9 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <include
+        android:id="@+id/popular_releases"
         layout="@layout/horizontal_movie_list_layout"
         android:layout_width="match_parent"
-        android:id="@+id/recent_releases"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         app:layout_constraintTop_toBottomOf="@id/title" />
