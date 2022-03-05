@@ -13,4 +13,6 @@
     <color name="platinum">#EBEBEB</color>
     <color name="silver">#C6C6C5</color>
 
+    <color name="rich_black">#121212</color>
+    <color name="dark_gray">#212121</color>
 </resources>
