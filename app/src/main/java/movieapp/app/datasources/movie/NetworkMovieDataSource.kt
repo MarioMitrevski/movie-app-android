@@ -15,4 +15,7 @@ class NetworkMovieDataSource @Inject constructor(
         return movieApi.getPopularMovies(page).compose(unWrapResponseWithError())
     }
 
+    override fun getTopRatedMovies(page: Int): Single<MoviesResponse> {
+        return movieApi.getTopRatedMovies(page).compose(unWrapResponseWithError())
+    }
 }

@@ -36,28 +36,47 @@ class HomeFragment : Fragment() {
         setLiveDataObservers()
 
         viewModel.getPopularMovies()
+        viewModel.getTopRatedMovies()
     }
 
     private fun setLiveDataObservers() {
-        viewModel.popularMoviesLiveData.observe(viewLifecycleOwner) {
-            binding.popularReleases.movieListRecyclerView.apply {
-                adapter = HorizontalMovieListAdapter(it) {
+        viewModel.apply {
+            popularMoviesLiveData.observe(viewLifecycleOwner) {
+                binding.popularMovies.movieListRecyclerView.apply {
+                    adapter = HorizontalMovieListAdapter(it) {
 
-                }
-                addItemDecoration(
-                    MarginItemDecoration(
-                        horizontalSpaceSize = resources.getDimensionPixelSize(
-                            R.dimen.horizontal_movie_item_horizontal_margin
+                    }
+                    addItemDecoration(
+                        MarginItemDecoration(
+                            horizontalSpaceSize = resources.getDimensionPixelSize(
+                                R.dimen.horizontal_movie_item_horizontal_margin
+                            )
                         )
                     )
-                )
+                }
+            }
+
+            topRatedMoviesLiveData.observe(viewLifecycleOwner) {
+                binding.topRatedMovies.movieListRecyclerView.apply {
+                    adapter = HorizontalMovieListAdapter(it) {
+
+                    }
+                    addItemDecoration(
+                        MarginItemDecoration(
+                            horizontalSpaceSize = resources.getDimensionPixelSize(
+                                R.dimen.horizontal_movie_item_horizontal_margin
+                            )
+                        )
+                    )
+                }
             }
         }
     }
 
     private fun initViews() {
-        binding.popularReleases.apply {
-            movieListTitle.text = getString(R.string.popular_releases)
+        binding.apply {
+            popularMovies.movieListTitle.text = getString(R.string.popular_movies)
+            topRatedMovies.movieListTitle.text = getString(R.string.top_rated_movies)
         }
     }
 

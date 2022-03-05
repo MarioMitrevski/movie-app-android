@@ -14,4 +14,8 @@ class MovieRepository @Inject constructor(
         return movieDataSource.getPopularMovies(page)
     }
 
+    fun getTopRatedMovies(page: Int): Single<MoviesResponse> {
+        return movieDataSource.getTopRatedMovies(page)
+    }
+
 }

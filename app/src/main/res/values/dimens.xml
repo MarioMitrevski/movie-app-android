@@ -8,4 +8,5 @@
     <dimen name="movie_item_title_text_size">16sp</dimen>
     <dimen name="movie_item_title_margin_top">12dp</dimen>
     <dimen name="movie_list_title_margin_top">16dp</dimen>
+    <dimen name="home_movie_list_margin_top">24dp</dimen>
 </resources>
