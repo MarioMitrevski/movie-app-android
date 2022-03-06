@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.navArgs
 import dagger.hilt.android.AndroidEntryPoint
 import movieapp.app.databinding.FragmentMoviesListBinding
 
@@ -12,6 +13,8 @@ import movieapp.app.databinding.FragmentMoviesListBinding
 class MoviesListFragment : Fragment() {
     private var _binding: FragmentMoviesListBinding? = null
     private val binding get() = _binding!!
+
+    private val args: MoviesListFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -24,6 +27,7 @@ class MoviesListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
 
     }
 

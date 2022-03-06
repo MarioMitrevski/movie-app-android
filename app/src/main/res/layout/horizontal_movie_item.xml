@@ -6,7 +6,7 @@
 
     <ImageView
         android:id="@+id/movie_poster_image"
-        android:layout_width="@dimen/horizontal_movie_item_movie_poster_image_width"
+        android:layout_width="@dimen/horizontal_movie_item_width"
         android:layout_height="0dp"
         android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"

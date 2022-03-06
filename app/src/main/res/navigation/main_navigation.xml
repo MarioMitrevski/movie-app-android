@@ -29,5 +29,9 @@
         android:id="@+id/moviesListFragment"
         android:name="movieapp.app.ui.movies.MoviesListFragment"
         android:label="fragment_movies_list"
-        tools:layout="@layout/fragment_movies_list" />
+        tools:layout="@layout/fragment_movies_list" >
+        <argument
+            android:name="movieListCategory"
+            app:argType="movieapp.app.domain.movies.entities.MoviesListCategory" />
+    </fragment>
 </navigation>

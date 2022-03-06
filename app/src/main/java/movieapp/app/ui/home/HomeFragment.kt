@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 import movieapp.app.R
 import movieapp.app.databinding.FragmentHomeBinding
+import movieapp.app.domain.movies.entities.MoviesListCategory
 import movieapp.app.util.MarginItemDecoration
 import movieapp.app.util.NetworkResult
 import java.time.LocalTime
@@ -60,9 +61,14 @@ class HomeFragment : Fragment() {
                             progressBar.isVisible = false
                             movieListError.root.isVisible = false
                             movieListRecyclerView.apply {
-                                adapter = HorizontalMovieListAdapter(it.data) { movieItem ->
-                                    navigateToMovieDetails(movieItem.id)
-                                }
+                                adapter = HorizontalMovieListAdapter(
+                                    it.data,
+                                    onMovieItemClickListener = { movieItem ->
+                                        navigateToMovieDetails(movieItem.id)
+                                    },
+                                    onSeeAllClickListener = {
+                                        navigateToSeeAllMoviesFromCategory(MoviesListCategory.POPULAR)
+                                    })
                                 addItemDecoration(
                                     MarginItemDecoration(
                                         horizontalSpaceSize = resources.getDimensionPixelSize(
@@ -102,9 +108,13 @@ class HomeFragment : Fragment() {
                             progressBar.isVisible = false
                             movieListError.root.isVisible = false
                             movieListRecyclerView.apply {
-                                adapter = HorizontalMovieListAdapter(it.data) { movieItem ->
-                                    navigateToMovieDetails(movieItem.id)
-                                }
+                                adapter = HorizontalMovieListAdapter(it.data,
+                                    onMovieItemClickListener = { movieItem ->
+                                        navigateToMovieDetails(movieItem.id)
+                                    },
+                                    onSeeAllClickListener = {
+                                        navigateToSeeAllMoviesFromCategory(MoviesListCategory.TOP_RATED)
+                                    })
                                 addItemDecoration(
                                     MarginItemDecoration(
                                         horizontalSpaceSize = resources.getDimensionPixelSize(
@@ -127,6 +137,10 @@ class HomeFragment : Fragment() {
                 }
             }
         }
+    }
+
+    private fun navigateToSeeAllMoviesFromCategory(moviesListCategory: MoviesListCategory) {
+        findNavController().navigate(HomeFragmentDirections.toMoviesListFragment(moviesListCategory))
     }
 
     private fun navigateToMovieDetails(id: Int) {
