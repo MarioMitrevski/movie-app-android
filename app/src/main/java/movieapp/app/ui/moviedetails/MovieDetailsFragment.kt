@@ -19,7 +19,6 @@ import movieapp.app.util.NetworkResult
 import movieapp.app.util.getFormattedMovieRuntime
 import movieapp.app.R
 import com.google.android.flexbox.FlexWrap
-import movieapp.app.ui.movies.MovieGenresAdapter
 import movieapp.app.util.MarginItemDecoration
 
 
