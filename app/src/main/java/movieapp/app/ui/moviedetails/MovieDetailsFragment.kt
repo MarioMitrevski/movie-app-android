@@ -1,4 +1,4 @@
-package movieapp.app.ui.movies
+package movieapp.app.ui.moviedetails
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -19,6 +19,7 @@ import movieapp.app.util.NetworkResult
 import movieapp.app.util.getFormattedMovieRuntime
 import movieapp.app.R
 import com.google.android.flexbox.FlexWrap
+import movieapp.app.ui.movies.MovieGenresAdapter
 import movieapp.app.util.MarginItemDecoration
 
 
