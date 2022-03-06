@@ -12,6 +12,8 @@
     <color name="dark_slate_gray">#214544</color>
     <color name="platinum">#EBEBEB</color>
     <color name="silver">#A1A19B</color>
+    <color name="dark_gray_transparent">#99212121</color>
+
 
     <color name="rich_black">#121212</color>
     <color name="dark_gray">#212121</color>

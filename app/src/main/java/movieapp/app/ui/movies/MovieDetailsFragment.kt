@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.google.android.flexbox.FlexDirection
@@ -106,6 +107,7 @@ class MovieDetailsFragment : Fragment() {
     private fun initClickListeners() {
         binding.apply {
             errorLayout.retryButton.setOnClickListener { viewModel.getMovieDetails(args.id) }
+            backButton.setOnClickListener { findNavController().popBackStack() }
         }
     }
 
