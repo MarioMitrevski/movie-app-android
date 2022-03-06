@@ -3,6 +3,7 @@ package movieapp.app.datasources.movie
 import io.reactivex.rxjava3.core.Single
 import movieapp.app.data.movie.MovieDataSource
 import movieapp.app.datasources.movie.network.MovieApi
+import movieapp.app.domain.movies.entities.MovieDetails
 import movieapp.app.domain.movies.entities.MoviesResponse
 import movieapp.app.util.NetworkResponseMapper
 import javax.inject.Inject
@@ -21,6 +22,11 @@ class NetworkMovieDataSource @Inject constructor(
 
     override fun getTopRatedMovies(page: Int): Single<MoviesResponse> {
         return movieApi.getTopRatedMovies(page)
+            .compose(networkResponseMapper.unWrapResponseWithError())
+    }
+
+    override fun getMovieDetails(id: Int): Single<MovieDetails> {
+        return movieApi.getMovieDetails(id)
             .compose(networkResponseMapper.unWrapResponseWithError())
     }
 }

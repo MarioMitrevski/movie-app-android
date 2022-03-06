@@ -30,9 +30,9 @@
         app:layout_constraintTop_toBottomOf="@+id/movie_list_title" />
 
     <include
-        layout="@layout/movie_list_error_layout"
-        android:layout_width="match_parent"
         android:id="@+id/movie_list_error"
+        layout="@layout/error_layout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

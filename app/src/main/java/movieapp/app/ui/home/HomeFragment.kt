@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 import movieapp.app.R
@@ -59,8 +60,8 @@ class HomeFragment : Fragment() {
                             progressBar.isVisible = false
                             movieListError.root.isVisible = false
                             movieListRecyclerView.apply {
-                                adapter = HorizontalMovieListAdapter(it.data) {
-
+                                adapter = HorizontalMovieListAdapter(it.data) { movieItem ->
+                                    navigateToMovieDetails(movieItem.id)
                                 }
                                 addItemDecoration(
                                     MarginItemDecoration(
@@ -77,7 +78,8 @@ class HomeFragment : Fragment() {
                             progressBar.isVisible = false
                             movieListError.root.isVisible = true
                             movieListError.errorMessage.text = it.message
-                            Glide.with(requireContext()).load(R.drawable.error).into(movieListError.errorIcon)
+                            Glide.with(requireContext()).load(R.drawable.error)
+                                .into(movieListError.errorIcon)
                         }
                     }
                 }
@@ -100,8 +102,8 @@ class HomeFragment : Fragment() {
                             progressBar.isVisible = false
                             movieListError.root.isVisible = false
                             movieListRecyclerView.apply {
-                                adapter = HorizontalMovieListAdapter(it.data) {
-
+                                adapter = HorizontalMovieListAdapter(it.data) { movieItem ->
+                                    navigateToMovieDetails(movieItem.id)
                                 }
                                 addItemDecoration(
                                     MarginItemDecoration(
@@ -118,12 +120,17 @@ class HomeFragment : Fragment() {
                             progressBar.isVisible = false
                             movieListError.root.isVisible = true
                             movieListError.errorMessage.text = it.message
-                            Glide.with(requireContext()).load(R.drawable.error).into(movieListError.errorIcon)
+                            Glide.with(requireContext()).load(R.drawable.error)
+                                .into(movieListError.errorIcon)
                         }
                     }
                 }
             }
         }
+    }
+
+    private fun navigateToMovieDetails(id: Int) {
+        findNavController().navigate(HomeFragmentDirections.toMovieDetailsFragment(id))
     }
 
     private fun initViews() {

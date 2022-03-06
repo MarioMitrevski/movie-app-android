@@ -8,6 +8,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import movieapp.app.BuildConfig
 import movieapp.app.datasources.movie.network.MovieApi
+import movieapp.app.util.typeadapters.LocalDateTypeAdapter
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response
@@ -16,6 +17,7 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.IOException
+import java.time.*
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
@@ -69,6 +71,7 @@ class ApiModule {
     fun provideGson(): Gson {
         return GsonBuilder()
             .setLenient()
+            .registerTypeAdapter(LocalDate::class.java, LocalDateTypeAdapter())
             .create()
     }
 
