@@ -12,6 +12,9 @@
         <action
             android:id="@+id/to_movieDetailsFragment"
             app:destination="@id/movieDetailsFragment" />
+        <action
+            android:id="@+id/to_moviesListFragment"
+            app:destination="@id/moviesListFragment" />
     </fragment>
     <fragment
         android:id="@+id/movieDetailsFragment"
@@ -24,7 +27,7 @@
     </fragment>
     <fragment
         android:id="@+id/moviesListFragment"
-        android:name="movieapp.app.MoviesListFragment"
+        android:name="movieapp.app.ui.movies.MoviesListFragment"
         android:label="fragment_movies_list"
         tools:layout="@layout/fragment_movies_list" />
 </navigation>

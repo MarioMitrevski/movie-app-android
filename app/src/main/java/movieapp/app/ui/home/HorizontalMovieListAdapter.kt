@@ -49,7 +49,7 @@ class HorizontalMovieListAdapter(
 
         fun bind(movieItem: MovieItem) {
             binding.apply {
-                Glide.with(itemView.context).load(BuildConfig.IMAGES_URL + movieItem.poster_path)
+                Glide.with(itemView.context).load(movieItem.poster_path)
                     .into(moviePosterImage)
                 movieTitle.text = movieItem.title
             }

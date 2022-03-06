@@ -2,6 +2,6 @@ package movieapp.app.domain.movies.entities
 
 data class MoviesResponse(
     val page: Int,
-    val results: List<MovieItem>,
+    var results: MutableList<MovieItem>,
     val total_pages: Int
 )

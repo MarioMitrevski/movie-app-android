@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/rich_black"
     android:orientation="vertical"
-    tools:context=".MoviesListFragment">
+    tools:context=".ui.movies.MoviesListFragment">
 
     <include
         android:id="@+id/toolbar"
