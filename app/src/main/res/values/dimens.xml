@@ -16,4 +16,5 @@
     <dimen name="genre_item_margin">4dp</dimen>
     <dimen name="horizontal_movie_item_movie_poster_image_width">150dp</dimen>
     <dimen name="horizontal_movie_list_height">240dp</dimen>
+    <dimen name="toolbar_title_text_size">18sp</dimen>
 </resources>
