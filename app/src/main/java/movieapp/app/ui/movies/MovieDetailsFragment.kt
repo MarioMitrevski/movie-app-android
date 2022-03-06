@@ -78,8 +78,7 @@ class MovieDetailsFragment : Fragment() {
 
     private fun setMovieDetailsData(movieDetails: MovieDetails) {
         binding.apply {
-            Glide.with(requireContext()).load(movieDetails.poster_path).optionalCenterCrop()
-                .into(moviePosterImage)
+            Glide.with(requireContext()).load(movieDetails.poster_path).into(moviePosterImage)
             movieTitle.text = movieDetails.title
             movieReleaseDate.text = movieDetails.release_date.year.toString()
             movieRuntime.text = movieDetails.runtime.getFormattedMovieRuntime()
