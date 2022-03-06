@@ -6,7 +6,6 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import movieapp.app.domain.movies.entities.MovieItem
 import movieapp.app.domain.movies.usecases.GetTopRatedMovies
 import movieapp.app.domain.movies.usecases.GetPopularMovies
-import movieapp.app.exceptions.ApiException
 import movieapp.app.util.NetworkResult
 import javax.inject.Inject
 

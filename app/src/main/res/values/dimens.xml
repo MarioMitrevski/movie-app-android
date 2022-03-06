@@ -9,4 +9,8 @@
     <dimen name="movie_item_title_margin_top">12dp</dimen>
     <dimen name="movie_list_title_margin_top">16dp</dimen>
     <dimen name="home_movie_list_margin_top">24dp</dimen>
+    <dimen name="movie_details_title_margin_top">24dp</dimen>
+    <dimen name="movie_details_title_text_size">32sp</dimen>
+    <dimen name="movie_details_movie_overview_margin_top">24dp</dimen>
+    <dimen name="movie_details_poster_image_height">300dp</dimen>
 </resources>
