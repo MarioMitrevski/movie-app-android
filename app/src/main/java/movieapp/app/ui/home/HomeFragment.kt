@@ -5,11 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 import movieapp.app.R
 import movieapp.app.databinding.FragmentHomeBinding
 import movieapp.app.util.MarginItemDecoration
+import movieapp.app.util.NetworkResult
 import java.time.LocalTime
 
 @AndroidEntryPoint
@@ -33,41 +36,91 @@ class HomeFragment : Fragment() {
 
         setWelcomeMessage()
         initViews()
-        setLiveDataObservers()
+        initClickListeners()
+        setPopularMoviesLiveDataObserver()
+        setTopRatedMoviesLiveDataObserver()
 
         viewModel.getPopularMovies()
         viewModel.getTopRatedMovies()
     }
 
-    private fun setLiveDataObservers() {
+    private fun setPopularMoviesLiveDataObserver() {
         viewModel.apply {
             popularMoviesLiveData.observe(viewLifecycleOwner) {
-                binding.popularMovies.movieListRecyclerView.apply {
-                    adapter = HorizontalMovieListAdapter(it) {
-
+                when (it) {
+                    is NetworkResult.Loading -> {
+                        binding.popularMovies.apply {
+                            progressBar.isVisible = true
+                            movieListError.root.isVisible = false
+                        }
                     }
-                    addItemDecoration(
-                        MarginItemDecoration(
-                            horizontalSpaceSize = resources.getDimensionPixelSize(
-                                R.dimen.horizontal_movie_item_horizontal_margin
-                            )
-                        )
-                    )
+                    is NetworkResult.Success -> {
+                        binding.popularMovies.apply {
+                            progressBar.isVisible = false
+                            movieListError.root.isVisible = false
+                            movieListRecyclerView.apply {
+                                adapter = HorizontalMovieListAdapter(it.data) {
+
+                                }
+                                addItemDecoration(
+                                    MarginItemDecoration(
+                                        horizontalSpaceSize = resources.getDimensionPixelSize(
+                                            R.dimen.horizontal_movie_item_horizontal_margin
+                                        )
+                                    )
+                                )
+                            }
+                        }
+                    }
+                    is NetworkResult.Error -> {
+                        binding.popularMovies.apply {
+                            progressBar.isVisible = false
+                            movieListError.root.isVisible = true
+                            movieListError.errorMessage.text = it.message
+                            Glide.with(requireContext()).load(R.drawable.error).into(movieListError.errorIcon)
+                        }
+                    }
                 }
             }
+        }
+    }
 
+    private fun setTopRatedMoviesLiveDataObserver() {
+        viewModel.apply {
             topRatedMoviesLiveData.observe(viewLifecycleOwner) {
-                binding.topRatedMovies.movieListRecyclerView.apply {
-                    adapter = HorizontalMovieListAdapter(it) {
-
+                when (it) {
+                    is NetworkResult.Loading -> {
+                        binding.topRatedMovies.apply {
+                            progressBar.isVisible = true
+                            movieListError.root.isVisible = false
+                        }
                     }
-                    addItemDecoration(
-                        MarginItemDecoration(
-                            horizontalSpaceSize = resources.getDimensionPixelSize(
-                                R.dimen.horizontal_movie_item_horizontal_margin
-                            )
-                        )
-                    )
+                    is NetworkResult.Success -> {
+                        binding.topRatedMovies.apply {
+                            progressBar.isVisible = false
+                            movieListError.root.isVisible = false
+                            movieListRecyclerView.apply {
+                                adapter = HorizontalMovieListAdapter(it.data) {
+
+                                }
+                                addItemDecoration(
+                                    MarginItemDecoration(
+                                        horizontalSpaceSize = resources.getDimensionPixelSize(
+                                            R.dimen.horizontal_movie_item_horizontal_margin
+                                        )
+                                    )
+                                )
+                            }
+                        }
+                    }
+                    is NetworkResult.Error -> {
+                        binding.topRatedMovies.apply {
+                            progressBar.isVisible = false
+                            movieListError.root.isVisible = true
+                            movieListError.errorMessage.text = it.message
+                            Glide.with(requireContext()).load(R.drawable.error).into(movieListError.errorIcon)
+                        }
+                    }
                 }
             }
         }
@@ -77,6 +130,13 @@ class HomeFragment : Fragment() {
         binding.apply {
             popularMovies.movieListTitle.text = getString(R.string.popular_movies)
             topRatedMovies.movieListTitle.text = getString(R.string.top_rated_movies)
+        }
+    }
+
+    private fun initClickListeners() {
+        binding.apply {
+            popularMovies.movieListError.retryButton.setOnClickListener { viewModel.getPopularMovies() }
+            topRatedMovies.movieListError.retryButton.setOnClickListener { viewModel.getTopRatedMovies() }
         }
     }
 

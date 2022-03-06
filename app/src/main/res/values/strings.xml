@@ -7,4 +7,7 @@
     <string name="good_evening">Good evening</string>
     <string name="popular_movies">Fan favorites</string>
     <string name="top_rated_movies">Top rated</string>
+
+    <string name="generic_error_message">Something went wrong. Please try again later.</string>
+    <string name="retry">Retry</string>
 </resources>
