@@ -21,13 +21,20 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setUpNavigation()
-        setUpFlags()
+        setFullScreenFlags()
     }
 
-    private fun setUpFlags() {
+    private fun setFullScreenFlags() {
         window.setFlags(
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
-            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+        )
+    }
+
+    private fun removeFullScreenFlags() {
+        window.clearFlags(
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+        )
     }
 
     private fun setUpNavigation() {
@@ -35,5 +42,16 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
         binding.bottomNavigation.setupWithNavController(navController)
+
+        navHostFragment.navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.moviesListFragment -> {
+                    removeFullScreenFlags()
+                }
+                else -> {
+                    setFullScreenFlags()
+                }
+            }
+        }
     }
 }

@@ -23,6 +23,7 @@
         <entry key="app/src/main/res/layout/horizontal_movie_list_layout.xml" value="0.16" />
         <entry key="app/src/main/res/layout/horizontal_movie_list_see_all_item.xml" value="0.22" />
         <entry key="app/src/main/res/layout/horizontal_movie_list_see_more_item.xml" value="0.31354166666666666" />
+        <entry key="app/src/main/res/layout/loading_item_binding.xml" value="0.32760416666666664" />
         <entry key="app/src/main/res/layout/movie_genre_item.xml" value="0.25885416666666666" />
         <entry key="app/src/main/res/layout/movie_genre_list_item.xml" value="0.17708333333333334" />
         <entry key="app/src/main/res/layout/movie_list_error_layout.xml" value="0.26927083333333335" />

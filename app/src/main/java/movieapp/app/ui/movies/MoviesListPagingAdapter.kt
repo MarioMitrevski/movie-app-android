@@ -43,7 +43,7 @@ class MoviesListPagingAdapter(
                     .into(moviePosterImage)
                 movieTitle.text = movieItem.title
                 movieOverview.text = movieItem.overview
-                movieReleaseDate.text = movieItem.release_date
+                movieReleaseDate.text = movieItem.release_date.year.toString()
             }
             itemView.setOnClickListener { onMovieItemClickListener(movieItem) }
         }

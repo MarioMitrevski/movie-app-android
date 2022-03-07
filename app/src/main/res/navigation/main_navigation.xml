@@ -33,5 +33,8 @@
         <argument
             android:name="movieListCategory"
             app:argType="movieapp.app.domain.movies.entities.MoviesListCategory" />
+        <action
+            android:id="@+id/to_movieDetailsFragment"
+            app:destination="@id/movieDetailsFragment" />
     </fragment>
 </navigation>
