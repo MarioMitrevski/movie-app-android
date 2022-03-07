@@ -10,7 +10,9 @@
         <entry key="app/src/main/res/drawable/home_button_selector.xml" value="0.3384615384615385" />
         <entry key="app/src/main/res/drawable/home_fragment_gradient_background.xml" value="0.3082051282051282" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.22135416666666666" />
+        <entry key="app/src/main/res/drawable/ic_search.xml" value="0.28854166666666664" />
         <entry key="app/src/main/res/drawable/movie_genre_item_divider.xml" value="0.22291666666666668" />
+        <entry key="app/src/main/res/drawable/search_background.xml" value="0.28854166666666664" />
         <entry key="app/src/main/res/drawable/search_button_selector.xml" value="0.3384615384615385" />
         <entry key="app/src/main/res/font/font.xml" value="0.3859375" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
@@ -18,6 +20,7 @@
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.20253164556962025" />
         <entry key="app/src/main/res/layout/fragment_movie_details.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_movies_list.xml" value="0.35572916666666665" />
+        <entry key="app/src/main/res/layout/fragment_search.xml" value="0.5" />
         <entry key="app/src/main/res/layout/home_movie_item.xml" value="0.35572916666666665" />
         <entry key="app/src/main/res/layout/horizontal_movie_item.xml" value="0.3416666666666667" />
         <entry key="app/src/main/res/layout/horizontal_movie_list_layout.xml" value="0.16" />

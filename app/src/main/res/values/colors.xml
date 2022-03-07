@@ -17,4 +17,5 @@
 
     <color name="rich_black">#121212</color>
     <color name="dark_gray">#212121</color>
+    <color name="light_gray">#303030</color>
 </resources>
